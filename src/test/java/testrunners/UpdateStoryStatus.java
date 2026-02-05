@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-        features = "src/test/resources/features/jiralogin.feature",
+        features = "src/test/resources/features/updateStoryStatus.feature",
         glue = {"stepdefinitions","hooks"},
         plugin = {
                 "pretty",
@@ -14,6 +14,6 @@ import io.cucumber.testng.CucumberOptions;
         monochrome = true
 )
 
-public class JiraLogin extends AbstractTestNGCucumberTests {
+public class UpdateStoryStatus extends AbstractTestNGCucumberTests {
 
 }

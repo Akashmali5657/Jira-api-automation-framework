@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,6 +7,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import utils.ConfigReader;
+import utils.ExtentRequestAndResponse;
 
 import java.util.Properties;
 
@@ -40,7 +40,7 @@ public class JiraLoginSteps {
                         .when()
                         .get("/rest/api/3/myself");
 
-        System.out.println(response.asString());
+        ExtentRequestAndResponse.logRequestAndResponse("Get", "/rest/api/3/myself",response);
     }
 
     // ---------------- THEN ----------------
@@ -56,20 +56,6 @@ public class JiraLoginSteps {
         String accountId = response.jsonPath().getString("accountId");
         Assert.assertNotNull(accountId);
         System.out.println("Login Successful. Account ID: " + accountId);
-    }
-
-    // ---------------- INVALID LOGIN ----------------
-    @Given("user has Jira login payload with invalid credentials")
-    public void user_has_jira_login_payload_with_invalid_credentials() {
-
-        response =
-                given()
-                        .auth().preemptive()
-                        .basic(email, "invalidToken123")
-                        .header("Content-Type", "application/json")
-                        .when()
-                        .get("/rest/api/3/myself");
-        System.out.println(response.asString());
     }
 
     @Then("error message should be displayed")
@@ -88,6 +74,6 @@ public class JiraLoginSteps {
                         .when()
                         .get("/rest/api/3/myself");
 
-        System.out.println(response.asString());
+        ExtentRequestAndResponse.logRequestAndResponse("Get", "/rest/api/3/myself",response);
     }
 }

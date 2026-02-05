@@ -1,12 +1,17 @@
-#Feature: Create user story in Jira
-#
-#  As a user
-#  I want to create user story into Jira using API
-#  and then I want to pull that user story into current sprint
-#
-#  Scenario: Create User Story in Backlog
-#    Given user prepare payload for create user story
-#    When user calls create user story API with post http method
-#    Then status code should be 200
-#    And response should contain user story ID
-#
+Feature: Create user story in Jira
+
+  As a user
+  I want to create user story into Jira using API
+  and then I want to pull that user story into current sprint
+
+  Scenario: Create a new user story successfully
+    Given user has create issue payload
+    When user calls create issue API with POST method
+    Then status code should be as 201
+    And response should contain issue key
+
+  Scenario: Create user story with missing mandatory field
+    Given user has create issue payload with missing summary
+    When user calls create issue API with POST method
+    Then status code should be as 400
+    And error message must be displayed

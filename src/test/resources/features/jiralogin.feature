@@ -4,7 +4,6 @@ Feature: Jira Login API
   I want to login into Jira using API
   So that I can generate authentication token and access Jira APIs
 
-
   Scenario: Successful Jira Login
     Given user has Jira login payload
     When user calls Jira login API with get method

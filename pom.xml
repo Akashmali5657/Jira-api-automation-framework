@@ -68,6 +68,13 @@
             <version>2.11.0</version>
         </dependency>
 
+<!--        Cucumber report-->
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
